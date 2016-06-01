@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Extension Service 1.0.0</title>
+    <title>Extension Service 0.0.1</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -112,7 +112,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="extension-service-1-0-0">Extension Service 1.0.0</h1>
+        <h1 id="extension-service-0-0-1">Extension Service 0.0.1</h1>
 
 <blockquote>
 <h3 id="consumes">Consumes</h3>
@@ -124,45 +124,31 @@
 <p><code class="prettyprint">application/json</code></p>
 </blockquote>
 
-<h2 id="create-a-new-extension">Create a new extension</h2>
-<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/admin/v1/extensions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-    </span><span class="nt">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"enableWebhooks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+<h2 id="get-existing-extensions">Get existing extensions</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/admin/v1/extensions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
 <pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"api-key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"enableWebhooks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="nt">"extensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"api-key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"enableWebhooks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
@@ -195,10 +181,16 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>extension<b title="required">&nbsp;*&nbsp;</b></td>
-<td>body</td>
-<td><a href="#newextension">NewExtension</a></td>
-<td>New extension description</td>
+<td>limit</td>
+<td>path</td>
+<td>integer</td>
+<td>The total number of extensions to get in this page.</td>
+</tr>
+<tr>
+<td>start</td>
+<td>path</td>
+<td>integer</td>
+<td>The index of the first extension in the page.</td>
 </tr>
 </tbody></table>
 
@@ -209,7 +201,7 @@
 <p><span comment="workaround for markdown processing in table"></span>
 <table>
 <tr><th>Http code</th><th>Type</th><th>Description</th></tr>
-<tr><td>201</td><td><a href="#extension">Extension</a></td><td>extension successfully created</td></tr> 
+<tr><td>201</td><td><a href="#extensionspage">ExtensionsPage</a></td><td>extension successfully created</td></tr> 
 <tr><td>400</td><td><a href="#error">Error</a></td><td>invalid request parameters</td></tr> 
 <tr><td>500</td><td><a href="#error">Error</a></td><td>internal error</td></tr> 
 </table></p>
@@ -756,6 +748,45 @@
 <td>config</td>
 <td><a href="#extensionconfig">ExtensionConfig</a></td>
 <td></td>
+</tr>
+</tbody></table>
+
+<h2 id="extensionspage">ExtensionsPage</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"extensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"api-key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"enableWebhooks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>extensions</td>
+<td>array[<a href="#extension">Extension</a>]</td>
+<td>An array containing the extension descriptions.</td>
 </tr>
 </tbody></table>
 
