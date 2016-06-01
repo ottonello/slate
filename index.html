@@ -467,10 +467,20 @@
 
 <span class="p">{</span><span class="w">
     </span><span class="nt">"incoming message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -516,7 +526,7 @@
 <tr><th>Http code</th><th>Type</th><th>Description</th></tr>
 </table></p>
 
-<h2 id="webhook">Webhook.</h2>
+<h2 id="webhook">Webhook</h2>
 <pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/webhoook</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -896,7 +906,12 @@
 
 <h2 id="websocketmessage">WebSocketMessage</h2>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -913,12 +928,22 @@
 <td>type</td>
 <td>string</td>
 <td>message</td>
+</tr>
+<tr>
+<td>event</td>
+<td><a href="#incomingmessage">IncomingMessage</a></td>
+<td></td>
 </tr>
 </tbody></table>
 
 <h2 id="websocketincomingmessage">WebSocketIncomingMessage</h2>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -935,6 +960,11 @@
 <td>type</td>
 <td>string</td>
 <td>message</td>
+</tr>
+<tr>
+<td>event</td>
+<td><a href="#incomingmessage">IncomingMessage</a></td>
+<td></td>
 </tr>
 </tbody></table>
 
