@@ -463,7 +463,14 @@
 
 <h2 id="websocket-connection-endpoint">Websocket connection endpoint</h2>
 <pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/api/v1/websocket</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</code></pre>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <p>The extension can use this endpoint to connect to a websocket to send and receive events.</p>
 
@@ -482,6 +489,12 @@
 <td>header</td>
 <td>string</td>
 <td>The extension should send its api key on the initial websocket handshake request. Requests without a valid api key will be rejected.</td>
+</tr>
+<tr>
+<td>message</td>
+<td>body</td>
+<td><a href="#websocketmessage">WebSocketMessage</a></td>
+<td>An outgoing message sent by the extension.</td>
 </tr>
 </tbody></table>
 
@@ -869,6 +882,50 @@
 <td>message</td>
 <td>string</td>
 <td></td>
+</tr>
+</tbody></table>
+
+<h2 id="websocketmessage">WebSocketMessage</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>message</td>
+</tr>
+</tbody></table>
+
+<h2 id="websocketincomingmessage">WebSocketIncomingMessage</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>message</td>
 </tr>
 </tbody></table>
 
