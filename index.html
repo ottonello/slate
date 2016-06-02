@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Extension Service Admin API 0.0.1</title>
+    <title>Extension Service Public API 0.0.1</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -112,7 +112,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="extension-service-admin-api-0-0-1">Extension Service Admin API 0.0.1</h1>
+        <h1 id="extension-service-public-api-0-0-1">Extension Service Public API 0.0.1</h1>
 
 <blockquote>
 <h3 id="consumes">Consumes</h3>
@@ -124,317 +124,17 @@
 <p><code class="prettyprint">application/json</code></p>
 </blockquote>
 
-<h2 id="get-existing-extensions">Get existing extensions</h2>
-<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/admin/v1/extensions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</code></pre>
-<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+<h2 id="send-a-message">Send a message</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/v1/messages</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">api-key</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nt">"extensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"api-key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"enableWebhooks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">500</span> <span class="ne">Internal Server Error</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>limit</td>
-<td>path</td>
-<td>integer</td>
-<td>Optional. The total number of extensions to get in this page.</td>
-</tr>
-<tr>
-<td>start</td>
-<td>path</td>
-<td>integer</td>
-<td>Optional. The index of the first extension in the page.</td>
-</tr>
-</tbody></table>
-
-<h3 id="responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Http code</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>201</td>
-<td><a href="#extensions">Extensions</a></td>
-<td>extension successfully created</td>
-</tr>
-<tr>
-<td>400</td>
-<td><a href="#error">Error</a></td>
-<td>invalid request parameters</td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="#error">Error</a></td>
-<td>internal error</td>
-</tr>
-</tbody></table>
-
-<h2 id="create-a-new-extension">Create a new extension</h2>
-<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/admin/v1/extensions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-    </span><span class="nt">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"enableWebhooks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"api-key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"enableWebhooks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">500</span> <span class="ne">Internal Server Error</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>extension<b title="required">&nbsp;*&nbsp;</b></td>
-<td>body</td>
-<td><a href="#newextension">NewExtension</a></td>
-<td>New extension description</td>
-</tr>
-</tbody></table>
-
-<h3 id="responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Http code</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>201</td>
-<td><a href="#extension">Extension</a></td>
-<td>extension successfully created</td>
-</tr>
-<tr>
-<td>400</td>
-<td><a href="#error">Error</a></td>
-<td>invalid request parameters</td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="#error">Error</a></td>
-<td>internal error</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-an-extension-definition">Get an extension definition</h2>
-<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/admin/v1/extensions/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</code></pre>
-<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"api-key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"enableWebhooks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">500</span> <span class="ne">Internal Server Error</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id<b title="required">&nbsp;*&nbsp;</b></td>
-<td>path</td>
-<td>string</td>
-<td>Id of the extension to retrieve</td>
-</tr>
-</tbody></table>
-
-<h3 id="responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Http code</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="#extension">Extension</a></td>
-<td>extension response</td>
-</tr>
-<tr>
-<td>400</td>
-<td><a href="#error">Error</a></td>
-<td>invalid request parameters</td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="#error">Error</a></td>
-<td>internal error</td>
-</tr>
-</tbody></table>
-
-<h2 id="update-an-extension">Update an extension</h2>
-<pre class="highlight http"><code><span class="nf">PUT</span> <span class="nn">/admin/v1/extensions/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-    </span><span class="nt">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"api-key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"enableWebhooks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -442,21 +142,7 @@
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"api-key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"enableWebhooks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
@@ -478,6 +164,8 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
+<p>Send a message to a set of users</p>
+
 <h3 id="parameters">Parameters</h3>
 
 <table><thead>
@@ -488,265 +176,234 @@
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>id<b title="required">&nbsp;*&nbsp;</b></td>
-<td>path</td>
-<td>string</td>
-<td>Id of the extension to modify</td>
-</tr>
-<tr>
-<td>extension<b title="required">&nbsp;*&nbsp;</b></td>
-<td>body</td>
-<td><a href="#extension">Extension</a></td>
-<td>extension definition</td>
-</tr>
-</tbody></table>
-
-<h3 id="responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Http code</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="#extension">Extension</a></td>
-<td>extension updated</td>
-</tr>
-<tr>
-<td>400</td>
-<td><a href="#error">Error</a></td>
-<td>invalid request parameters</td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="#error">Error</a></td>
-<td>internal error</td>
-</tr>
-</tbody></table>
-
-<h1 id="models">Models</h1>
-
-<h2 id="extensionprofile">ExtensionProfile</h2>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="fields">Fields</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>name<b title="required">&nbsp;*&nbsp;</b></td>
-<td>string</td>
-<td>Descriptive name of the extension.</td>
-</tr>
-<tr>
-<td>picture<b title="required">&nbsp;*&nbsp;</b></td>
-<td>string</td>
-<td>Url of the picture which should be shown in the clients for this extension.</td>
-</tr>
-<tr>
-<td>url</td>
-<td>string</td>
-<td>Link to the owner or extension website.</td>
-</tr>
-<tr>
-<td>description</td>
-<td>string</td>
-<td>A longer text which can be used to describe the extension in depth.</td>
-</tr>
-</tbody></table>
-
-<h2 id="extensionconfig">ExtensionConfig</h2>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"enableWebhooks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="fields">Fields</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>enableWebhooks</td>
-<td>boolean</td>
-<td>true, if webhooks should be called for this extension.</td>
-</tr>
-<tr>
-<td>webhooks</td>
-<td><a href="#webhook">Webhook</a></td>
-<td>Mapping of event types to webhooks.</td>
-</tr>
-</tbody></table>
-
-<h2 id="newextension">NewExtension</h2>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"enableWebhooks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="fields">Fields</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>owner<b title="required">&nbsp;*&nbsp;</b></td>
-<td>string</td>
-<td>Owner. Unique identification of the owner of the extension. Authentication and Authorization is external to this service.</td>
-</tr>
-<tr>
-<td>config<b title="required">&nbsp;*&nbsp;</b></td>
-<td><a href="#extensionconfig">ExtensionConfig</a></td>
-<td></td>
-</tr>
-<tr>
-<td>profile<b title="required">&nbsp;*&nbsp;</b></td>
-<td><a href="#extensionprofile">ExtensionProfile</a></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<h2 id="extension">Extension</h2>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"api-key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"enableWebhooks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="fields">Fields</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id<b title="required">&nbsp;*&nbsp;</b></td>
-<td>string</td>
-<td>The Id of the extension.</td>
-</tr>
-<tr>
-<td>owner<b title="required">&nbsp;*&nbsp;</b></td>
-<td>string</td>
-<td></td>
-</tr>
 <tr>
 <td>api-key<b title="required">&nbsp;*&nbsp;</b></td>
+<td>header</td>
 <td>string</td>
-<td>The API Key that the extension uses to send messages and access the service.</td>
+<td>API Key. The API Key identifies the developer and the extension and provides authorization/authentication to access the service. Required.</td>
 </tr>
 <tr>
-<td>profile<b title="required">&nbsp;*&nbsp;</b></td>
-<td><a href="#extensionprofile">ExtensionProfile</a></td>
-<td></td>
-</tr>
-<tr>
-<td>config</td>
-<td><a href="#extensionconfig">ExtensionConfig</a></td>
-<td></td>
+<td>message<b title="required">&nbsp;*&nbsp;</b></td>
+<td>body</td>
+<td><a href="#message">Message</a></td>
+<td>Message to be sent</td>
 </tr>
 </tbody></table>
 
-<h2 id="extensions">Extensions</h2>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"extensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"api-key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"enableWebhooks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"webhooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="fields">Fields</h3>
+<h3 id="responses">Responses</h3>
 
 <table><thead>
 <tr>
-<th>Name</th>
+<th>Http code</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>extensions</td>
-<td>array[<a href="#extension">Extension</a>]</td>
-<td>An array containing extension descriptions.</td>
+<td>200</td>
+<td><a href="#messageresult">MessageResult</a></td>
+<td>OK</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#error">Error</a></td>
+<td>invalid request parameters</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#error">Error</a></td>
+<td>internal error</td>
 </tr>
 </tbody></table>
 
 <h2 id="webhook">Webhook</h2>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/v1/webhoook</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">500</span> <span class="ne">Internal Server Error</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Mapping of event types to webhooks.</p>
+<p>Optionally, when defining the extension, webhooks managed by the 3rd party can be configured to be called for each event type.
+\n*Possibly this setting depends on outgoing proxy rules, so in general webhooks are better applied for internally hosted extensions*</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message<b title="required">&nbsp;*&nbsp;</b></td>
+<td>body</td>
+<td><a href="#incomingmessage">IncomingMessage</a></td>
+<td>Received message from a user.</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#messageresult">MessageResult</a></td>
+<td>OK</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#error">Error</a></td>
+<td>invalid request parameters</td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="#error">Error</a></td>
+<td>internal error</td>
+</tr>
+</tbody></table>
+
+<h2 id="websocket-connection-endpoint">Websocket connection endpoint</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/api/v1/websocket</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">api-key</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"incoming message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"message result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The extension can use this endpoint to connect to a websocket to send and receive events.</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api-key<b title="required">&nbsp;*&nbsp;</b></td>
+<td>header</td>
+<td>string</td>
+<td>The extension should send its api key on the initial websocket handshake request. Requests without a valid api key will be rejected.</td>
+</tr>
+<tr>
+<td>incoming message</td>
+<td>body</td>
+<td><a href="#websocketincomingmessage">WebSocketIncomingMessage</a></td>
+<td>Optional. An incoming message sent to the extension.</td>
+</tr>
+<tr>
+<td>message</td>
+<td>body</td>
+<td><a href="#websocketmessage">WebSocketMessage</a></td>
+<td>Optional. An outgoing message sent by the extension.</td>
+</tr>
+<tr>
+<td>message result</td>
+<td>body</td>
+<td><a href="#websocketmessageresult">WebSocketMessageResult</a></td>
+<td>Optional. Web Socket message sent result.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>body</td>
+<td><a href="#websocketerror">WebSocketError</a></td>
+<td>Optional. Web Socket error result.</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<h1 id="models">Models</h1>
+
+<h2 id="message">Message</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="fields">Fields</h3>
 
@@ -758,9 +415,64 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>message</td>
+<td>to<b title="required">&nbsp;*&nbsp;</b></td>
+<td>array[string]</td>
+<td>An array of addresses in the format &#039;prefix:address&#039;.</td>
+</tr>
+<tr>
+<td>body<b title="required">&nbsp;*&nbsp;</b></td>
 <td>string</td>
-<td>The webhook to be called on a &#039;message&#039; event.</td>
+<td>The body of the message.</td>
+</tr>
+</tbody></table>
+
+<h2 id="incomingmessage">IncomingMessage</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>from<b title="required">&nbsp;*&nbsp;</b></td>
+<td>string</td>
+<td>The sender address in the format &#039;prefix:address&#039;.</td>
+</tr>
+<tr>
+<td>body<b title="required">&nbsp;*&nbsp;</b></td>
+<td>string</td>
+<td>The body of the message.</td>
+</tr>
+</tbody></table>
+
+<h2 id="messageresult">MessageResult</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>The id of the sent message.</td>
 </tr>
 </tbody></table>
 
@@ -794,6 +506,132 @@
 <tr>
 <td>message</td>
 <td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="websocketmessage">WebSocketMessage</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>message</td>
+</tr>
+<tr>
+<td>event</td>
+<td><a href="#message">Message</a></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="websocketmessageresult">WebSocketMessageResult</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>message</td>
+</tr>
+<tr>
+<td>event</td>
+<td><a href="#messageresult">MessageResult</a></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="websocketerror">WebSocketError</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>error</td>
+</tr>
+<tr>
+<td>event</td>
+<td><a href="#error">Error</a></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="websocketincomingmessage">WebSocketIncomingMessage</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>message</td>
+</tr>
+<tr>
+<td>event</td>
+<td><a href="#incomingmessage">IncomingMessage</a></td>
 <td></td>
 </tr>
 </tbody></table>
